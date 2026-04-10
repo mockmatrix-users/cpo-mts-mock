@@ -293,7 +293,7 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         sec_pattern = re.compile(r'\d+\.\s*(.+?)\((\d+)-(\d+)\)-(\d+)')
         
-       for line in text.splitlines():
+        for line in text.splitlines():
             m = sec_pattern.search(line)
             if m:
                 sec_name = m.group(1).strip()
@@ -310,12 +310,10 @@ async def text_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     "end": int(m.group(3)),
                     "time": int(m.group(4))
                 })
-        
 
         session["step"] = "TITLE"
         await update.message.reply_text("✅ Sections Saved.\n\nPlease send the **Quiz Title**.")
         return
-
 
     # Step 1: Quiz Title
     if session["step"] == "TITLE":
